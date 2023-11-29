@@ -3,6 +3,7 @@ import {
   createUser,
   getOneUser,
   signInUser,
+  updateOneUser,
   verifyUser,
 } from "../controller/userController";
 
@@ -14,5 +15,6 @@ router.route("/sign-in-user").post(signInUser);
 router.route("/verify-user").patch(verifyUser);
 
 router.route("/get-one-user/:userID").get(getOneUser);
+router.route("/update-one-user/:userID").patch(updateOneUser);
 
 export default router;

@@ -133,3 +133,24 @@ export const getOneUser = async (
     });
   }
 };
+
+export const updateOneUser = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const { userID } = req.params;
+    const {userName} = req.body
+
+    const user = await userModel.findByIdAndUpdate(userID, {userName}, {new:true});
+
+    return res.status(201).json({
+      message: "user data",
+      data: user,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      message: "Error",
+    });
+  }
+};
