@@ -1,8 +1,12 @@
 import { Application, Request, Response } from "express";
 import auth from "./router/userRouter";
+import product from "./router/productRouter";
+import ratings from "./router/ratingRoute";
 export const mainApp = (app: Application) => {
   try {
     app.use("/api/v1/auth", auth);
+    app.use("/api/v1/product", product);
+    app.use("/api/v1/ratings", ratings);
 
     app.get("/", (req: Request, res: Response): Response => {
       try {

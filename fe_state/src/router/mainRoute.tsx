@@ -5,6 +5,7 @@ import Register from "../pages/auth/Register";
 import SignIn from "../pages/auth/SignInScreen";
 import Verify from "../pages/auth/verifyScreen";
 import PrivateRouter from "./PrivateRouter";
+import SingleDetail from "../pages/SingleDetail";
 
 export const mainRoute = createBrowserRouter([
   {
@@ -14,7 +15,14 @@ export const mainRoute = createBrowserRouter([
         <Layout />
       </PrivateRouter>
     ),
-    children: [{ index: true, element: <HomeScreen /> }],
+    children: [
+      { index: true, element: <HomeScreen /> },
+      {
+        index: true,
+        path: `detail/:productID`,
+        element: <SingleDetail />,
+      },
+    ],
   },
   {
     path: "/register",

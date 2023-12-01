@@ -12,13 +12,16 @@ const Layout: FC = () => {
       <Sider />
       <div className="w-full flex justify-end">
         <div
-          className={` bg-slate-300 transition-all duration-300`}
+          className={` transition-all duration-300`}
           style={{
             width: `${readToggle ? "calc(100% - 200px)" : "calc(100% - 70px)"}`,
           }}
         >
           <Header />
-          <Outlet />
+
+          <div className="m-4">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

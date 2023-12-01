@@ -4,8 +4,8 @@ const Header = () => {
   const { data }: any = userHook();
 
   return (
-    <div>
-      <div>Welcome {data?.userName}</div>
+    <div className="w-[90%] my-6 flex justify-end">
+      <div className="">Welcome back {data?.userName}</div>
     </div>
   );
 };
