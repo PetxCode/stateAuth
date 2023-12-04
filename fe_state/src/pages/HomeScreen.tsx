@@ -34,7 +34,9 @@ const HomeScreen = () => {
             </div>
             <div>{props.description}</div>
             <div className="flex justify-between mt-8  mb-3 items-center">
-              <div className="font-bold text-[28px] ">₦{props.price * 700}</div>
+              <div className="font-bold text-[28px] ">
+                ₦{(props.price * 700).toLocaleString("en-US")}.00
+              </div>
               <div
                 className="bg-purple-500 text-white px-4 py-2 rounded-sm cursor-pointer "
                 onClick={() => {

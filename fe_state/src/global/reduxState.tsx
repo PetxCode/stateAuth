@@ -4,7 +4,7 @@ const initialState = {
   toggle: false,
   user: "" || null,
   product: [],
-  cart: [],
+  cart: [] as any,
 };
 
 const reduxState = createSlice({
@@ -28,21 +28,35 @@ const reduxState = createSlice({
     },
 
     addCart: (state, { payload }) => {
-      // const check: any = state.cart.some((el: any) => el.id === payload.id);
+      // state.cart = [];
 
-      console.log(payload);
-      console.log(state.cart);
-      // if (check > 0) {
-      //   state.cart[check].QTY += 1;
-      //   console.log(check);
-      // } else {
-      //   const addQTY = {
-      //     payload,
-      //     QTY: 1,
-      //   };
+      const check = state.cart.find((el: any) => el.id === payload.id);
 
-      //   state.cart.push(addQTY);
-      // }
+      if (check) {
+        check.QTY += 1;
+      } else {
+        state.cart.push({ ...payload, QTY: 1 });
+      }
+    },
+
+    removeFromCart: (state, { payload }) => {
+      // state.cart = [];
+
+      const check = state.cart.filter((el: any) => el.id !== payload.id);
+      state.cart = check;
+    },
+
+    removeCartQTY: (state, { payload }) => {
+      // state.cart = [];
+
+      const checkCart = state.cart.findIndex((el: any) => el.id === payload.id);
+
+      if (state.cart[checkCart].QTY > 1) {
+        state.cart[checkCart].QTY -= 1;
+      } else if (state.cart[checkCart].QTY === 1) {
+        const check = state.cart.filter((el: any) => el.id !== payload.id);
+        state.cart = check;
+      }
     },
   },
 });
